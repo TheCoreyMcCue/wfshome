@@ -20,5 +20,6 @@ export const aboutHeroText = style({
 })
 
 export const aboutHeroImage = style({
-  width: "100%",
+  width: "50%",
+  height: "50%"
 })

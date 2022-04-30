@@ -7,7 +7,7 @@ import * as styles from "./about-hero.css"
 export default function AboutHero(props) {
   return (
     <Section>
-      <Container>
+      <Container width="wide" stlye={{textAlign: "center"}}>
         <SuperHeading className={styles.aboutHeroHeader}>
           {props.heading}
         </SuperHeading>
@@ -15,7 +15,13 @@ export default function AboutHero(props) {
           <Text className={styles.aboutHeroText}>{props.text}</Text>
         )}
       </Container>
-      <Container width="wide">
+      <Container
+        width="wide"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         {props.image && (
           <GatsbyImage
             alt={props.image.alt}
