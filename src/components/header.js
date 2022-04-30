@@ -1,6 +1,7 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Menu, X } from "react-feather"
+import logo from "../../../wfs-homepage/docs/images/wfs-logo.png"
 import {
   Container,
   Flex,
@@ -77,7 +78,7 @@ export default function Header() {
         <Flex variant="spaceBetween">
           <NavLink to="/">
             <VisuallyHidden>Home</VisuallyHidden>
-            <BrandLogo />
+            <img src={logo} style={{ height: "4rem", width: "auto" }} />
           </NavLink>
           <nav>
             <FlexList gap={4}>
@@ -109,7 +110,7 @@ export default function Header() {
           >
             <NavLink to="/">
               <VisuallyHidden>Home</VisuallyHidden>
-              <BrandLogo />
+              <img src={logo} style={{ height: "1rem", width: "auto" }} />
             </NavLink>
           </span>
           <Flex>
