@@ -5,6 +5,7 @@ import { Container, Box, Heading } from "../components/ui"
 
 export default function Page(props) {
   const { page } = props.data
+  console.log(page)
 
   return (
     <Layout {...page}>
