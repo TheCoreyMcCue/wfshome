@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Menu, X } from "react-feather"
-import logo from "../../../wfs-homepage/docs/images/wfs-logo.png"
+import logo from "../../docs/images/wfs-logo.png"
 import {
   Container,
   Flex,
