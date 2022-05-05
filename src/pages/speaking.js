@@ -1,23 +1,47 @@
-import React from "react"
-import { Link } from "gatsby"
-import { BlockLink, Box } from "../components/ui"
-
+import * as React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import * as sections from "../components/sections"
+import Fallback from "../components/fallback"
+import { BlockLink } from "../components/ui"
 
-const SpeakingPage = () => (
-  <Box>
-    <BlockLink to='/'>
-      <h1> Back home</h1>
+export default function Speaking(props) {
+  const { aboutPage } = props.data
+  console.log(props)
+  return (
+    <BlockLink to={`/speaking`}>
+      <Layout {...aboutPage}>
+        {aboutPage.blocks.map((block) => {
+          const { id, blocktype, ...componentProps } = block
+          const Component = sections[blocktype] || Fallback
+          return <Component key={id} {...componentProps} />
+        })}
+      </Layout>
     </BlockLink>
-    <h3>Speaking Engagements</h3>
-    <p>I would love to speak at your conference!</p>
-    <p>I will be speaking at the following conferences next year:</p>
-    <ul>
-      <li>JS Heroes</li>
-      <li>self.conference</li>
-      <li>Strange Loop</li>
-    </ul>
-  </Box>
-)
+  )
+}
 
-export default SpeakingPage
+export const query = graphql`
+  {
+    aboutPage {
+      id
+      title
+      description
+      image {
+        id
+        url
+      }
+      blocks: content {
+        id
+        blocktype
+        ...AboutHeroContent
+        ...AboutStatListContent
+        ...HomepageProductListContent
+        ...AboutLeadershipContent
+        ...HomepageBenefitListContent
+        ...AboutLogoListContent
+        ...HomepageCtaContent
+      }
+    }
+  }
+`
