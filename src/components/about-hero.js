@@ -5,7 +5,6 @@ import { Container, Section, Text, SuperHeading } from "./ui"
 import * as styles from "./about-hero.css"
 
 export default function AboutHero(props) {
-  console.log(props.image.gatsbyImageData)
   return (
     <Section>
       <Container width="wide" stlye={{ textAlign: "center" }}>

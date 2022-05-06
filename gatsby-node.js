@@ -296,6 +296,19 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage
     }
 
+    interface TourDate implements Node & HomepageBlock {
+      id: ID!
+      blocktype: String
+      city: String
+      description: String
+      date: Date
+    }
+    interface TourDates implements Node & HomepageBlock {
+      id: ID!
+      blocktype: String
+      content: [TourDate]
+    }
+
     interface AboutStat implements Node {
       id: ID!
       value: String
@@ -501,6 +514,11 @@ exports.createSchemaCustomization = async ({ actions }) => {
       text: String
       content: [HomepageProduct] @link(from: "content___NODE")
     }
+    type ContentfulTourDates implements Node & TourDates & HomepageBlock
+      @dontInfer {
+      blocktype: String @blocktype
+      content: [TourDate] @link(from: "content___NODE")
+    }
 
     type ContentfulHomepage implements Node & Homepage @dontInfer {
       id: ID!
@@ -520,6 +538,15 @@ exports.createSchemaCustomization = async ({ actions }) => {
       heading: String
       text: String
       image: HomepageImage @link(from: "image___NODE")
+    }
+
+    type ContentfulTourDate implements Node & TourDate & HomepageBlock
+      @dontInfer {
+      id: ID!
+      blocktype: String @blocktype
+      city: String
+      description: String
+      date: Date
     }
 
     type ContentfulAboutStat implements Node & AboutStat @dontInfer {

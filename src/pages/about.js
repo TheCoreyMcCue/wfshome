@@ -7,7 +7,7 @@ import { BlockLink } from "../components/ui"
 
 export default function About(props) {
   const { aboutPage } = props.data
-console.log(props)
+  console.log(props)
   return (
     <BlockLink to={`/speaking`}>
       <Layout {...aboutPage}>
@@ -41,6 +41,7 @@ export const query = graphql`
         ...HomepageBenefitListContent
         ...AboutLogoListContent
         ...HomepageCtaContent
+        ...TourDatesContent
       }
     }
   }
